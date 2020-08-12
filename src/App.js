@@ -4,6 +4,7 @@ import Header from './components/Header'
 import LoginModal from './components/LoginModal'
 import Projects from './components/Projects'
 import './App.css'
+import 'antd/dist/antd.css'
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class App extends React.Component {
     this.state = {
       users: [],
       showLoginModal: false,
-      loggedIn: false
+      loggedIn: true
     }
 
     this.slmRef = React.createRef()
@@ -53,7 +54,7 @@ class App extends React.Component {
         <h1>Users</h1>
           {users.map(user => <div key={user.id}>{user.username}</div>)}
           <button
-            onClick={ e => this.setState({ showLoginModal: true })}
+            onClick={e => this.setState({ showLoginModal: true })}
           >
             Login
           </button>

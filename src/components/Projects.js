@@ -27,7 +27,7 @@ class Projects extends React.Component {
   establishTechIcons = object => {
     console.log('running establish tech icons', object)
     console.log(typeof(object))
-    console.log(Object.values(object))
+    // console.log(Object.values(object) || 'nada')
     return (
       <div>
         Frameworks
@@ -46,6 +46,12 @@ class Projects extends React.Component {
     )
   }
 
+  establishTechIconsTwo = (stateItem, index) => {
+    console.log('establishTechIconsTwo running...')
+    console.log(stateItem, index)
+    
+  }
+
   render() {
     const projects = (this.state.data).map((item, index) => {
       return (
@@ -54,7 +60,8 @@ class Projects extends React.Component {
           <p>{item.summary}</p>
             <div>
               <h5>Technologies:</h5>
-              {this.establishTechIcons(JSON.parse(item.technologies))}
+                {this.establishTechIconsTwo(item, index)}
+              {/* {this.establishTechIcons(JSON.parse(item.technologies))} */}
             </div>
             <div>
               <h5>Links:</h5>
