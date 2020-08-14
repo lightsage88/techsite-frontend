@@ -75,13 +75,13 @@ class AddProject extends React.Component {
             <Form.Item
               label="Project Image"
               name="projectImage"
-              // onChange={e => {
-              //     // console.log(e.target.files[0])
-              //     // if(this.state.imageUrlForNewProject) {
-              //       this.props.handleChange('projectImage', this.state.imageUrlForNewProject)
-              //     // }
-              //   }
-              // }
+              onChange={e => {
+                  // console.log(e.target.files[0])
+                  // if(this.state.imageUrlForNewProject) {
+                    this.props.handleChange('projectImage', e.target.files[0])
+                  // }
+                }
+              }
 
             >
               <Avatar action={this.avatarChildUpdatesParent}/>

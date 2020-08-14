@@ -24,11 +24,11 @@ class ProjectManager extends React.Component {
   }
 
   componentDidUpdate = prevState => {
-    if(this.state !== prevState && !this.state.projectImage) {
-      if(localStorage.getItem("imageUrlCode")) {
-        this.setState({ projectImage: localStorage.getItem("imageUrlCode") })
-      }
-    }
+    // if(this.state !== prevState && !this.state.projectImage) {
+    //   if(localStorage.getItem("imageUrlCode")) {
+    //     this.setState({ projectImage: localStorage.getItem("imageUrlCode") })
+    //   }
+    // }
   }
 
   handleChange = (key, value, type) => {
@@ -42,14 +42,58 @@ class ProjectManager extends React.Component {
     }
   }
 
-  talkToServer = () => {
+  addImageToProject = (id, imageObject) => {
+    console.log('addImageToProjectRunning', id, imageObject)
+    let formData = new FormData()
+    formData.append('image', imageObject)
+
+    return axios({
+      url: "/projects/uploadProjectPicture",
+      method: "POST",
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
+      data: formData
+    })
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.error(err)
+    })
+
+    // return axios.post('/projects/uploadProjectPicture', formData, { 
+    // headers: {
+    //     'Content-Type': 'multipart/form-data'
+    //   }
+    // })
+    // .then(response => {
+    //   console.log(response)
+    // })
+    // .catch(err => {
+    //   console.error(err)
+    // })
+
+  }
+
+
+  talkToServer = async () => {
     console.log('talkToServer is running....and ya better go catch it', this.state)
+    let fileObject = this.state.projectImage
+    let stateObject = Object.assign({}, this.state, {
+      ...this.state,
+      projectImage: null
+    })
+    console.log(stateObject)
     axios.post('/projects/upload', {
-      projectDetails: this.state
+      projectDetails: stateObject
     })
     .then(response => {
         console.log(response)
-        localStorage.removeItem("imageUrlCode")
+        if(this.state.projectImage) {
+         this.addImageToProject(response.data.insertId, fileObject)
+        }
+        // localStorage.removeItem("imageUrlCode")
     })
     .catch(error => {
         console.log(error)
