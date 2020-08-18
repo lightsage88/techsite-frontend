@@ -62,64 +62,34 @@ class ProjectManager extends React.Component {
     .catch(err => {
       console.error(err)
     })
-
-    // return axios.post('/projects/uploadProjectPicture', formData, { 
-    // headers: {
-    //     'Content-Type': 'multipart/form-data'
-    //   }
-    // })
-    // .then(response => {
-    //   console.log(response)
-    // })
-    // .catch(err => {
-    //   console.error(err)
-    // })
-
   }
  
   //TODO: Upload the project, get the id name, then upload the photo and place it into the row
   //with the ID name from the response 
-  //Simple and Doubling back
+  //Simple and Doubling backy
 
   talkToServer = async () => {
     console.log('talkToServer is running....and ya better go catch it', this.state)
     let fileObject = this.state.projectImage
     let stateObject = Object.assign({}, this.state, {
-      ...this.state,
+      ...this.state, 
       projectImage: null
     })
     let formData = new FormData()
     formData.append('image', fileObject)
-    // formData.append('id', id)
-    // formData.append('data', stateObject)
     console.log(stateObject)
-    // axios.post('/projects/upload', {
-    //   projectDetails: stateObject
-    // })
-    // .then(response => {
-    //     console.log(response)
-    //     if(this.state.projectImage) {
-    //      this.addImageToProject(response.data.insertId, fileObject)
-    //     }
-    //     // localStorage.removeItem("imageUrlCode")
-    // })
-    // .catch(error => {
-    //     console.log(error)
-    // })
-    return axios({
-      url: "/projects/upload",
-      method: "POST",
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      },
-      data: {formData, stateObject}
-      // body: stateObject
+    axios.post('/projects/upload', {
+      projectDetails: stateObject
     })
-    .then(res => {
-      console.log(res)
+    .then(response => {
+        console.log(response)
+        if(this.state.projectImage) {
+          console.log('this is the part where we call the next function')
+        //  this.addImageToProject(response.data.insertId, fileObject)
+        }
     })
-    .catch(err => {
-      console.error(err)
+    .catch(error => {
+        console.log(error)
     })
   }
 
