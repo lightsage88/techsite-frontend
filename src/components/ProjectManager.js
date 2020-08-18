@@ -46,6 +46,7 @@ class ProjectManager extends React.Component {
     console.log('addImageToProjectRunning', id, imageObject)
     let formData = new FormData()
     formData.append('image', imageObject)
+    formData.append('id', id)
 
     return axios({
       url: "/projects/uploadProjectPicture",
@@ -75,7 +76,10 @@ class ProjectManager extends React.Component {
     // })
 
   }
-
+ 
+  //TODO: Upload the project, get the id name, then upload the photo and place it into the row
+  //with the ID name from the response 
+  //Simple and Doubling back
 
   talkToServer = async () => {
     console.log('talkToServer is running....and ya better go catch it', this.state)
@@ -84,19 +88,38 @@ class ProjectManager extends React.Component {
       ...this.state,
       projectImage: null
     })
+    let formData = new FormData()
+    formData.append('image', fileObject)
+    // formData.append('id', id)
+    // formData.append('data', stateObject)
     console.log(stateObject)
-    axios.post('/projects/upload', {
-      projectDetails: stateObject
+    // axios.post('/projects/upload', {
+    //   projectDetails: stateObject
+    // })
+    // .then(response => {
+    //     console.log(response)
+    //     if(this.state.projectImage) {
+    //      this.addImageToProject(response.data.insertId, fileObject)
+    //     }
+    //     // localStorage.removeItem("imageUrlCode")
+    // })
+    // .catch(error => {
+    //     console.log(error)
+    // })
+    return axios({
+      url: "/projects/upload",
+      method: "POST",
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
+      data: {formData, stateObject}
+      // body: stateObject
     })
-    .then(response => {
-        console.log(response)
-        if(this.state.projectImage) {
-         this.addImageToProject(response.data.insertId, fileObject)
-        }
-        // localStorage.removeItem("imageUrlCode")
+    .then(res => {
+      console.log(res)
     })
-    .catch(error => {
-        console.log(error)
+    .catch(err => {
+      console.error(err)
     })
   }
 
