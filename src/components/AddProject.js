@@ -18,17 +18,6 @@ class AddProject extends React.Component {
     }
   }
 
-  // componentDidUpdate = prevProps => {
-  //   console.log('we updated', prevProps)
-  //   if (prevProps.technologiesKnown != this.props.technologiesKnown) {
-  //     console.log('funny things')
-  //     if (this.props.technologiesKnown.length > 0) {
-  //       console.log('bocho things')
-  //       this.setState({ loading: false })
-  //     }
-  //   }
-  // }
-
   static getDerivedStateFromProps = (props, state) => {
     console.log('hip hop tunes', props, state)
 
@@ -43,11 +32,7 @@ class AddProject extends React.Component {
     }
   }
 
-  avatarChildUpdatesParent = (imageUrl) => {
-    console.log('avatarchild giving parent an update son', imageUrl)
-    if(!this.state.imageUrlForNewProject)
-    this.setState({ imageUrlForNewProject: imageUrl })
-  }
+
 
   render() {
     console.log(this.state)
@@ -75,16 +60,10 @@ class AddProject extends React.Component {
             <Form.Item
               label="Project Image"
               name="projectImage"
-              onChange={e => {
-                  // console.log(e.target.files[0])
-                  // if(this.state.imageUrlForNewProject) {
-                    this.props.handleChange('projectImage', e.target.files[0])
-                  // }
-                }
+              onChange={e => { this.props.handleChange('projectImage', e.target.files[0]) }
               }
-
             >
-              <Avatar action={this.avatarChildUpdatesParent}/>
+              <Avatar />
             </Form.Item>
             <Form.Item
               label="Project Name"
@@ -115,14 +94,14 @@ class AddProject extends React.Component {
               <TextArea/>
             </Form.Item>
             <Form.Item
-              label="Language"
-              name="language"
+              label="Technologies"
+              name="technologies"
             >
               <Select
                 style={{ width: '100%' }}
-                defaultValue=''
+                mode="multiple"
                 placeholder="Please select"
-                onChange={value => this.props.handleChange('languages', value, 'json')}
+                onChange={value => this.props.handleChange('technologies', value, 'json')}
                 >
                 {technologiesKnown}
               </Select>
@@ -132,7 +111,6 @@ class AddProject extends React.Component {
       )
     }
   }
-    
 }
 
 export default AddProject

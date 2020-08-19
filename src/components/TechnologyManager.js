@@ -22,16 +22,46 @@ class TechnologyManager extends React.Component {
     }
   }
 
-  talkToServer = () => {
-    console.log('talkToServer is running....and ya better go catch it')
-    axios.post('/projects/upload', {
-      projectDetails: this.state
+  makeNewTechRowInDB = () => {
+    console.log("PAISHO", this.state)
+    const dataObject = Object.assign({}, this.state, {
+      ...this.state,
+      technologyImage: null
+    })
+    
+    return axios.post('/tech/upload', {
+      data: dataObject
     })
     .then(response => {
-        console.log(response)
+      console.log(response)
+      if(this.state.technologyImage){
+        this.addPictureToTechKnownRow(response.data.tech_id, this.state.technologyImage)
+      }
     })
-    .catch(error => {
-        console.log(error)
+    .catch(err => {
+      console.error(err)
+    })
+  }
+
+  addPictureToTechKnownRow = (id, imageObject) => {
+    console.log('addPictureToTechKnownRow running...')
+    let formData = new FormData()
+    formData.append('image', imageObject)
+    formData.append('id', id)
+
+    return axios({
+      url: "/tech/uploadTechImage",
+      method: "POST",
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
+      data: formData
+    })
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.error(err)
     })
   }
 
@@ -52,7 +82,7 @@ class TechnologyManager extends React.Component {
                 // call method taht allows us to DELETE existing project in our database via our b-e server
              // then at the end run this ---> this.props.toggleShowManageProjects()
               console.log(this.state)
-              this.talkToServer()
+              this.makeNewTechRowInDB()
               }
             }
             onCancel={() => this.props.toggleShowTechnologyManager()}

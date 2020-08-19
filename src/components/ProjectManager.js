@@ -61,7 +61,7 @@ class ProjectManager extends React.Component {
     })
     .catch(err => {
       console.error(err)
-    })
+    }) 
   }
  
   //TODO: Upload the project, get the id name, then upload the photo and place it into the row
@@ -72,7 +72,8 @@ class ProjectManager extends React.Component {
     console.log('talkToServer is running....and ya better go catch it', this.state)
     let fileObject = this.state.projectImage
     let stateObject = Object.assign({}, this.state, {
-      ...this.state, 
+      ...this.state,
+      technologies: this.state.technologies.toString(), 
       projectImage: null
     })
     let formData = new FormData()

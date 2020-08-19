@@ -14,13 +14,15 @@ class AddTechnology extends React.Component {
       loading: true,
       projects: [],
       children: [],
-      technologiesKnown: []
+      technologiesKnown: [],
+      techTypes: []
     }
   }
 
   componentDidMount = () => {
     this.retrieveTechnologies()
     this.gatherTechItems()
+    this.retrieveTechTypes()
   }
 
   gatherTechItems = () => {
@@ -63,10 +65,10 @@ class AddTechnology extends React.Component {
   }
 
   retrieveTechTypes = () => {
-    return axios.get('/techTypes')
+    return axios.get('/tech/techTypes')
     .then(response => {
       console.log('here are the tech-types', response.data)
-
+      this.setState({ techTypes: response.data })
     })
     .catch(err => {
       console.error(err)
@@ -77,6 +79,18 @@ class AddTechnology extends React.Component {
 
   render() {
     console.log(this.state)
+    const techTypes = this.state.techTypes.map((item, index) => {
+      return (
+        <React.Fragment>
+          <Option 
+            key={index}
+            value={item.technology_type_id}
+          >
+            {item.technology_type_name.toUpperCase()}
+          </Option>
+        </React.Fragment>
+      )
+    })
     
     if(this.state.loading) {
       return (
@@ -89,8 +103,7 @@ class AddTechnology extends React.Component {
             <Form.Item
               label="Technology Image"
               name="technologyImage"
-              onChange={e => this.props.handleChange('=technologyImage', e.target.value)}
-
+              onChange={e => this.props.handleChange('technologyImage', e.target.files[0])}
             >
               <Avatar />
             </Form.Item>
@@ -105,9 +118,21 @@ class AddTechnology extends React.Component {
             <Form.Item
               label="Technology Link"
               name="technologyLink"
-              onChange={e => this.props.handleChange('projectLink', e.target.value)}
+              onChange={e => this.props.handleChange('tech_website', e.target.value)}
             >
               <Input/>
+            </Form.Item>
+            <Form.Item
+              label="Technology Type"
+              name="technologyType"
+            >
+              <Select
+                onChange={value => {
+                  this.props.handleChange('tech_type', value)
+                }}
+              >
+                {techTypes}
+              </Select>
             </Form.Item>
           </Form>
         </div>
