@@ -68,25 +68,24 @@ class ProjectManager extends React.Component {
   //with the ID name from the response 
   //Simple and Doubling backy
 
-  talkToServer = async () => {
-    console.log('talkToServer is running....and ya better go catch it', this.state)
-    let fileObject = this.state.projectImage
+  makeNewProjectRowInDB = async () => {
+    console.log('makeNewProjectRowInDB is running....and ya better go catch it', this.state)
     let stateObject = Object.assign({}, this.state, {
       ...this.state,
       technologies: this.state.technologies.toString(), 
       projectImage: null
     })
-    let formData = new FormData()
-    formData.append('image', fileObject)
+    delete stateObject.projects
+    delete stateObject.technologiesKnown
     console.log(stateObject)
     axios.post('/projects/upload', {
-      projectDetails: stateObject
+      data: stateObject
     })
     .then(response => {
         console.log(response)
         if(this.state.projectImage) {
           console.log('this is the part where we call the next function')
-        //  this.addImageToProject(response.data.insertId, fileObject)
+         this.addImageToProject(response.data.project_id, this.state.projectImage)
         }
     })
     .catch(error => {
@@ -138,7 +137,7 @@ class ProjectManager extends React.Component {
                 // call method taht allows us to DELETE existing project in our database via our b-e server
              // then at the end run this ---> this.props.toggleShowManageProjects()
               console.log(this.state)
-              this.talkToServer()
+              this.makeNewProjectRowInDB()
               }
             }
             onCancel={() => this.props.toggleShowManageProjects()}
