@@ -9,6 +9,14 @@ const { TabPane } = Tabs;
 class TechnologyManager extends React.Component {
   constructor() {
     super()
+    this.state = {}
+    //establish baseState
+    this.baseState = this.state
+  }
+
+  resetComponent = (toggleMethod, baseState) => {
+    toggleMethod()
+    this.setState(baseState)
   }
 
   handleChange = (key, value, type) => {
@@ -36,6 +44,8 @@ class TechnologyManager extends React.Component {
       console.log(response)
       if(this.state.technologyImage){
         this.addPictureToTechKnownRow(response.data.tech_id, this.state.technologyImage)
+      } else {
+        this.resetComponent(this.props.toggleShowTechnologyManager, this.baseState)
       }
     })
     .catch(err => {
@@ -59,6 +69,7 @@ class TechnologyManager extends React.Component {
     })
     .then(res => {
       console.log(res)
+      this.resetComponent(this.props.toggleShowTechnologyManager, this.baseState)
     })
     .catch(err => {
       console.error(err)

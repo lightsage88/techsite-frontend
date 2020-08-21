@@ -37,17 +37,6 @@ class AddTechnology extends React.Component {
     .catch(err => {
       console.error(err)
     })
-
-
-    //call to table of known technologies
-      // type
-      // name
-      // picture (svgporn)
-
-    // let techs = []
-    // for (let i = 10; i < 36; i++) {
-    //   techs.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>);
-    // }
   }
 
   retrieveTechnologies = () => {

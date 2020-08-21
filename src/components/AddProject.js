@@ -32,18 +32,37 @@ class AddProject extends React.Component {
     }
   }
 
+  arrayBufferToBase64 = buffer => {
+    var binary = ''
+    var bytes = new Uint8Array( buffer )
+    var len = bytes.byteLength
+    for (var i = 0; i < len; i++) {
+      binary += String.fromCharCode( bytes[ i ] )
+    }
+    return window.btoa( binary )
+  }
 
 
   render() {
     console.log(this.state)
     const technologiesKnown = this.props.technologiesKnown.map((item, index) => {
+      console.log('wolcochoHOSO', item)
+      const imageSrc = 
+        item.image 
+          ? `data:${item.mimetype};base64,${this.arrayBufferToBase64(item.image.data)}`
+          : null
+      
       return (
         <React.Fragment>
           <Option 
             key={index}
             value={item.name}
           >
-            {item.name}
+            <img
+              className="iconImage"
+              src={imageSrc}
+            /> 
+            {' ' + item.name}
           </Option>
         </React.Fragment>
       )

@@ -11,11 +11,12 @@ const { TabPane } = Tabs;
 class ProjectManager extends React.Component {
   constructor() {
     super()
-
     this.state = {
       projects: [],
       technologiesKnown: []
     }
+    //preserve initial state in a new object
+    this.baseState = this.state
   }
 
   componentDidMount = () => {
@@ -58,15 +59,17 @@ class ProjectManager extends React.Component {
     })
     .then(res => {
       console.log(res)
+      this.resetComponent(this.props.toggleShowManageProjects, this.baseState)         
     })
     .catch(err => {
       console.error(err)
     }) 
   }
  
-  //TODO: Upload the project, get the id name, then upload the photo and place it into the row
-  //with the ID name from the response 
-  //Simple and Doubling backy
+  resetComponent = (toggleMethod, baseState) => {
+    toggleMethod()
+    this.setState(baseState)
+  }
 
   makeNewProjectRowInDB = async () => {
     console.log('makeNewProjectRowInDB is running....and ya better go catch it', this.state)
@@ -84,8 +87,9 @@ class ProjectManager extends React.Component {
     .then(response => {
         console.log(response)
         if(this.state.projectImage) {
-          console.log('this is the part where we call the next function')
          this.addImageToProject(response.data.project_id, this.state.projectImage)
+        } else {
+          this.resetComponent(this.props.toggleShowManageProjects, this.baseState)         
         }
     })
     .catch(error => {
