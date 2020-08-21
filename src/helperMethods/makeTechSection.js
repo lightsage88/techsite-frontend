@@ -1,0 +1,3 @@
+const makeTechSection = (sectionNameID, data) => {
+  
+}
