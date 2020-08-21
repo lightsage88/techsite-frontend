@@ -2,9 +2,9 @@ import React from "react"
 import axios from "axios"
 import {Spin, Form, Input, Button, Checkbox, Select} from "antd"
 import Avatar from './Avatar'
+import { base64ToImage } from '../helperMethods/base64ToImage'
 const { TextArea } = Input
 const { Option } = Select
-
 
 class AddProject extends React.Component {
   constructor() {
@@ -32,31 +32,17 @@ class AddProject extends React.Component {
     }
   }
 
-  arrayBufferToBase64 = buffer => {
-    var binary = ''
-    var bytes = new Uint8Array( buffer )
-    var len = bytes.byteLength
-    for (var i = 0; i < len; i++) {
-      binary += String.fromCharCode( bytes[ i ] )
-    }
-    return window.btoa( binary )
-  }
-
-
   render() {
     console.log(this.state)
     const technologiesKnown = this.props.technologiesKnown.map((item, index) => {
       console.log('wolcochoHOSO', item)
-      const imageSrc = 
-        item.image 
-          ? `data:${item.mimetype};base64,${this.arrayBufferToBase64(item.image.data)}`
-          : null
+      const imageSrc = base64ToImage(item)
       
       return (
         <React.Fragment>
           <Option 
             key={index}
-            value={item.name}
+            value={item.tech_id}
           >
             <img
               className="iconImage"
