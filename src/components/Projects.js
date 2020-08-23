@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { base64ToImage } from '../helperMethods/base64ToImage'
+import { makeTechSection } from '../helperMethods/makeTechSection'
 var _ = require('lodash')
 
 
@@ -99,17 +100,25 @@ class Projects extends React.Component {
       let cms = techGroups[7]
       console.log(languages)
       
-      const languageTech = languages.map((item,index)=> {
-        let langImage = base64ToImage(item)
-        return (
-          <div key={index}>
-            <a href={item.tech_website}>
-              <img src={langImage} />
-              {item.name}
-            </a>
-          </div>
-        )
-      })
+
+    //   const languageTech = 
+    //     languages.length > 0 ? 
+    //     languages.map((item,index)=> {
+    //     let langImage = base64ToImage(item)
+              
+        
+        
+    //     return (
+    //       <div key={index}>
+    //         <a href={item.tech_website}>
+    //           <img src={langImage} />
+    //           {item.name}
+    //         </a>
+    //       </div>
+    //     )
+    //   })
+    //   : null
+    // const langSection = languages.length > 0 ? <div><h3>Languages</h3>{languageTech}</div> : null
 
       
 
@@ -126,7 +135,7 @@ class Projects extends React.Component {
             <p>{item.summary}</p>
               <div>
                 <h5>Technologies:</h5>
-                {languageTech}
+                {makeTechSection("Languages", languages)}
               </div>
               <div>
                 <h5>Links:</h5>
