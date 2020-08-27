@@ -1,9 +1,13 @@
 import React from 'react'
 import axios from 'axios'
 import Header from './components/Header'
+import MenuComponent from './components/MenuComponent'
+import Intro from './components/Intro'
+import AnimeJSPlayground from './components/AnimeJSPlayground'
 import LoginModal from './components/LoginModal'
 import Projects from './components/Projects'
 import './App.css'
+import './Svg.css'
 import 'antd/dist/antd.css'
 
 class App extends React.Component {
@@ -44,6 +48,8 @@ class App extends React.Component {
     let users = this.state.users
     return (
       <div className="App">
+        <MenuComponent />
+        <Intro />
         {
           this.state.loggedIn
             ? <Header
@@ -63,6 +69,7 @@ class App extends React.Component {
               ? <LoginModal ref={this.slmRef}/>
               : ''
           }
+          {/* <AnimeJSPlayground /> */}
           <Projects />
       </div>
     );

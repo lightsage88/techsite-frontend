@@ -136,6 +136,12 @@ class Projects extends React.Component {
               <div>
                 <h5>Technologies:</h5>
                 {makeTechSection("Languages", languages)}
+                {makeTechSection("Front-End Frameworks", frontEndFWS)}
+                {makeTechSection("Back-End Frameworks", backEndFWS)}
+                {makeTechSection("Libraries", libraries)}
+                {makeTechSection("Testing Libraries", testingLibraries)}
+                {makeTechSection("UI Frameworks", uiFWS)}
+                {makeTechSection("Content Management Systems", cms)}
               </div>
               <div>
                 <h5>Links:</h5>

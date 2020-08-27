@@ -10,9 +10,9 @@ export const base64ToImage = data => {
   }
   
   const imageSrc = 
-  data.image 
-    ? `data:${data.mimetype};base64,${arrayBufferToBase64(data.image.data)}`
-    : null
+    data.image 
+      ? `data:${data.mimetype};base64,${arrayBufferToBase64(data.image.data)}`
+      : null
   
   return imageSrc
 }
