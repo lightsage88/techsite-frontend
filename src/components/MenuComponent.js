@@ -35,7 +35,11 @@ class MenuComponent extends React.Component {
           <SubMenu className="menuCustom" key="sub1" icon={<PhilanthropyLogo />} title="M E N U">
             {/* <Anchor> */}
               <Menu.Item key="1">
-                About
+                <a 
+                  onClick={(e) => this.handleClick(e)}
+                  href="#aboutLand">
+                  About
+                </a>
               </Menu.Item>
               <Menu.Item key="2">
                 {/* <Link href="2" title="Projectos"> */}

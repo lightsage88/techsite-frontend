@@ -99,33 +99,10 @@ class Projects extends React.Component {
       let testingLibraries = techGroups[5]
       let uiFWS = techGroups[6]
       let cms = techGroups[7]
-      console.log(languages)
-      
-
-    //   const languageTech = 
-    //     languages.length > 0 ? 
-    //     languages.map((item,index)=> {
-    //     let langImage = base64ToImage(item)
-              
-        
-        
-    //     return (
-    //       <div key={index}>
-    //         <a href={item.tech_website}>
-    //           <img src={langImage} />
-    //           {item.name}
-    //         </a>
-    //       </div>
-    //     )
-    //   })
-    //   : null
-    // const langSection = languages.length > 0 ? <div><h3>Languages</h3>{languageTech}</div> : null
-
-      
-
       const imageSrc = base64ToImage(item)
+ 
       return (
-        <div key={index}>
+        <div className="projectEntry" key={index}>
           <div className="projectIconDiv">
             <a href={item.projectlink}>
               <img className="projectIcon" src={imageSrc}/>

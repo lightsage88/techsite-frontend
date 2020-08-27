@@ -5,11 +5,14 @@ import Header from './components/Header'
 import MenuComponent from './components/MenuComponent'
 import Intro from './components/Intro'
 import Users from './components/Users'
+import About from './components/About'
+import Contact from './components/Contact'
 import AnimeJSPlayground from './components/AnimeJSPlayground'
 import LoginModal from './components/LoginModal'
 import Projects from './components/Projects'
 import './App.css'
 import './Svg.css'
+import './About.css'
 import 'antd/dist/antd.css'
 
 
@@ -85,7 +88,9 @@ class App extends React.Component {
               : ''
           } */}
           {/* <AnimeJSPlayground /> */}
+          <About />
           <Projects ref={this.projectsRef}/>
+          <Contact />
       </div>
     );
   }

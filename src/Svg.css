@@ -7,11 +7,11 @@
 #introDiv {
   display: flex;
   flex-direction: column;
-  border: green solid;
   justify-content: flex-start;
 }
 
 .bg-video {
+  position: absolute;
   margin: 0 auto;
   overflow:hidden;
   width: 100%;
@@ -29,11 +29,12 @@
 #name {
   font-size: 120px;
   font-family: "Metal Gear Solid 2";
-  position: absolute;
-  top: 48%;
-  left:0;
+  position: relative;
+  left: 0;
   width: 100%;
-  
+  top: 50;
+  margin-top: 15%;
+  margin-bottom: 20%;
 }
 
 #mask-bg {
@@ -43,6 +44,12 @@
 .menuCustom {
   font-family: "MGS2 Menu", sans-serif;
 }
+
+/*Silly overlap thing we have to do for the about section to have its texture*/
+#introDiv {
+  background-color: #edf9ff;
+  background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */}
 
 @media only screen and (max-width: 425px) {
   .bg-video {
