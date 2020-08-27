@@ -1,14 +1,17 @@
 import React from 'react'
 import axios from 'axios'
+// import {ReactComponent as PhilanthropyLogo} from './svgs/philanIcon.svg'
 import Header from './components/Header'
 import MenuComponent from './components/MenuComponent'
 import Intro from './components/Intro'
+import Users from './components/Users'
 import AnimeJSPlayground from './components/AnimeJSPlayground'
 import LoginModal from './components/LoginModal'
 import Projects from './components/Projects'
 import './App.css'
 import './Svg.css'
 import 'antd/dist/antd.css'
+
 
 class App extends React.Component {
   constructor(props) {
@@ -17,10 +20,11 @@ class App extends React.Component {
     this.state = {
       users: [],
       showLoginModal: false,
-      loggedIn: true
+      loggedIn: false
     }
 
     this.slmRef = React.createRef()
+    this.projectsRef = React.createRef()
   }
   
 
@@ -30,6 +34,9 @@ class App extends React.Component {
 
   //make ref that changes the slm value
 
+  setShowLoginModalToTrue = () => {
+    this.setState({ showLoginModal: true })
+  }
 
   getUsers = () => {
     axios('/users')
@@ -45,7 +52,6 @@ class App extends React.Component {
   }
 
   render() {
-    let users = this.state.users
     return (
       <div className="App">
         <MenuComponent />
@@ -57,7 +63,16 @@ class App extends React.Component {
               />
             : ''
         }
-        <h1>Users</h1>
+        {
+          this.state.loggedIn
+            ? <Users 
+                users={this.state.users}
+                action={this.setShowLoginModalToTrue}
+                showLoginModal={this.state.showLoginModal}
+              />
+            : ''
+        }
+        {/* <h1>Users</h1>
           {users.map(user => <div key={user.id}>{user.username}</div>)}
           <button
             onClick={e => this.setState({ showLoginModal: true })}
@@ -68,9 +83,9 @@ class App extends React.Component {
             this.state.showLoginModal
               ? <LoginModal ref={this.slmRef}/>
               : ''
-          }
+          } */}
           {/* <AnimeJSPlayground /> */}
-          <Projects />
+          <Projects ref={this.projectsRef}/>
       </div>
     );
   }

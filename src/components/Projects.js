@@ -12,6 +12,7 @@ class Projects extends React.Component {
     this.state = {
       data: []
     }
+    this.myRef = React.createRef()
   }
 
   UNSAFE_componentWillMount = () => {
@@ -155,8 +156,8 @@ class Projects extends React.Component {
     })
 
     return (
-      <div>
-        <h1>
+      <div id="projectLand">
+        <h1 className="sectionHead" id="projectsSectionHead">
           Projects
         </h1>
         <div

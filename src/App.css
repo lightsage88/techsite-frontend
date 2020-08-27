@@ -28,6 +28,23 @@
   color: #61dafb;
 }
 
+/* Menu */
+ul.ant-menu-dark.ant-menu-root {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Projects */
+.sectionHead {
+  font-family: 'MGS2 Menu', sans-serif;
+}
+
+#projectLand { 
+  scroll-margin-top: 200px;
+
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

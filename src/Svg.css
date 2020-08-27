@@ -4,11 +4,17 @@
   box-sizing: border-box;
 }
 
+#introDiv {
+  display: flex;
+  flex-direction: column;
+  border: green solid;
+  justify-content: flex-start;
+}
+
 .bg-video {
   margin: 0 auto;
   overflow:hidden;
   width: 100%;
-  height: 100vh;
 }
 
 #ourSVG {
@@ -23,12 +29,9 @@
 #name {
   font-size: 120px;
   font-family: "Metal Gear Solid 2";
-
-
   position: absolute;
-  /* top: 0; */
+  top: 48%;
   left:0;
-  height: 100vh;
   width: 100%;
   
 }
@@ -46,7 +49,5 @@
     height: auto;
   }
 
-  #name {
-    height: 40vh;
-  }
+  
 }
