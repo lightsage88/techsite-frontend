@@ -1,6 +1,6 @@
 import React from 'react'
 import anime from 'animejs'
-const vid = require('../videos/glassHex.mp4')
+const vid = require('../videos/movingHexagons.mp4')
 const adrianRosales = require('../svgs/adrianRosales.svg')
 
 
