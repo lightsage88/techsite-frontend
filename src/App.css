@@ -51,7 +51,10 @@ ul.ant-menu-dark.ant-menu-root {
 
 }
 
-
+#philanthropyIcon {
+  height: 76%;
+  margin-right: 1vw;
+}
 
 @keyframes App-logo-spin {
   from {

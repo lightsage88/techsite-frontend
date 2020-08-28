@@ -2,6 +2,7 @@ import React from "react"
 import { Menu, Anchor } from 'antd';
 import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
 import {ReactComponent as PhilanthropyLogo} from '../svgs/philanIcon.svg'
+var pic = require('../svgs/philanIcon.png')
 
 const { Link } = Anchor
 const { SubMenu } = Menu
@@ -31,7 +32,7 @@ class MenuComponent extends React.Component {
           selectedKeys={[this.state.current]}
           mode="inline"
         >
-          <SubMenu className="menuCustom" key="sub1" icon={<PhilanthropyLogo />} title="M E N U">
+          <SubMenu className="menuCustom" key="sub1" icon={<img id="philanthropyIcon" src={pic} />} title="M E N U">
             {/* <Anchor> */}
               <Menu.Item key="1">
                 <a 
