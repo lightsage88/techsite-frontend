@@ -16,9 +16,8 @@ class MenuComponent extends React.Component {
   }
 
   handleClick = (e) => {
-    console.log('handlingClick with', e)
-    // e.preventDefault();
-};
+    this.setState({ current: e.key })
+  };
 
 
   render() {

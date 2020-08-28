@@ -1,8 +1,11 @@
 import React from 'react'
 import axios from 'axios'
+import { Card, Collapse } from 'antd'
 import { base64ToImage } from '../helperMethods/base64ToImage'
 import { makeTechSection } from '../helperMethods/makeTechSection'
 var _ = require('lodash')
+const { Panel } = Collapse
+const { Meta } = Card
 
 
 class Projects extends React.Component {
@@ -86,7 +89,9 @@ class Projects extends React.Component {
     return techGroups
   }
 
-
+  collapseCB = (key) => {
+    console.log(key)
+  }
 
   render() {
     console.log('projects rendering', this.state)
@@ -103,16 +108,28 @@ class Projects extends React.Component {
  
       return (
         <div className="projectEntry" key={index}>
-          <div className="projectIconDiv">
+          <Card 
+            hoverable
+            style={index % 2 == 0 ? {background: ''} : {background: 'cyan'}}
+          >
             <a href={item.projectlink}>
-              <img className="projectIcon" src={imageSrc}/>
+              <div className="projectLinkDiv">
+                <Meta title={item.name} />
+                <img className="projectIcon" src={imageSrc}/>
+              </div>
             </a>
-          </div>
-          <div className="projectDetails">
-            <h3>{item.name}</h3>
-            <p>{item.summary}</p>
-              <div>
-                <h5>Technologies:</h5>
+            <Collapse defaultActiveKey={['1']} onChange={this.collapseCB}>
+              <Panel showArrow={false} className="panelTitle" header="Description" key="1" disabled>
+                <p className="projectDescriptionP">{item.summary}</p>
+              </Panel>
+              <Panel className="panelTitle" header="Links" key="2">
+                <ul className="projectLinksUL">
+                  <li><a href={item.projectlink}>Project Link</a></li>
+                  <li><a href={item.repolink}>Repo Link</a></li>
+                </ul>
+                
+              </Panel>
+              <Panel className="panelTitle" header="Tech" key="3">
                 {makeTechSection("Languages", languages)}
                 {makeTechSection("Front-End Frameworks", frontEndFWS)}
                 {makeTechSection("Back-End Frameworks", backEndFWS)}
@@ -120,15 +137,37 @@ class Projects extends React.Component {
                 {makeTechSection("Testing Libraries", testingLibraries)}
                 {makeTechSection("UI Frameworks", uiFWS)}
                 {makeTechSection("Content Management Systems", cms)}
-              </div>
-              <div>
-                <h5>Links:</h5>
-                <a href={item.projectlink}>Project Link</a>
-                <br/>
-                <a href={item.repolink}>Repo Link</a>
-              </div>
-          </div>
+              </Panel>
+            </Collapse>
+          </Card>
         </div>
+        // <div className="projectEntry" key={index}>
+        //   <div className="projectIconDiv">
+        //     <a href={item.projectlink}>
+        //       <img className="projectIcon" src={imageSrc}/>
+        //     </a>
+        //   </div>
+        //   <div className="projectDetails">
+        //     <h3>{item.name}</h3>
+        //     <p>{item.summary}</p>
+        //       <div>
+        //         <h5>Technologies:</h5>
+        //         {makeTechSection("Languages", languages)}
+        //         {makeTechSection("Front-End Frameworks", frontEndFWS)}
+        //         {makeTechSection("Back-End Frameworks", backEndFWS)}
+        //         {makeTechSection("Libraries", libraries)}
+        //         {makeTechSection("Testing Libraries", testingLibraries)}
+        //         {makeTechSection("UI Frameworks", uiFWS)}
+        //         {makeTechSection("Content Management Systems", cms)}
+        //       </div>
+        //       <div>
+        //         <h5>Links:</h5>
+        //         <a href={item.projectlink}>Project Link</a>
+        //         <br/>
+        //         <a href={item.repolink}>Repo Link</a>
+        //       </div>
+        //   </div>
+        // </div>
       )
     })
 

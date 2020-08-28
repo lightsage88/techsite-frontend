@@ -24,7 +24,7 @@ export const makeTechSection = (sectionName, array) => {
       )
     })
 
-  section = <div>
+  section = <div className="techSection">
               <h3>{sectionName}</h3>
                 <div className="techRow">{tech}</div>
             </div>

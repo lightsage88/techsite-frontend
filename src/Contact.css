@@ -1,0 +1,31 @@
+#contactLand {
+  background-color: #edf9ff;
+  background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+#contactMethodDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactMethodImages {
+  height: auto;
+  max-height: 10vw;
+  margin: 5vw 0;
+}
+
+#contactLand h1:last-child {
+  margin-bottom: 0;
+}
+
+@media only screen and (min-width: 425px) {
+  #contactMethodDiv {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .contactMethodImages {
+    max-height: 6vw;
+  }
+}

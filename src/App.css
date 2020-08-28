@@ -35,6 +35,12 @@ ul.ant-menu-dark.ant-menu-root {
   z-index: 100;
 }
 
+.ant-menu-sub {
+  background-color: #00313d !important;
+  background-image: url("https://www.transparenttextures.com/patterns/hexellence.png") !important;
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
 /* Projects */
 .sectionHead {
   font-family: 'MGS2 Menu', sans-serif;
@@ -44,6 +50,8 @@ ul.ant-menu-dark.ant-menu-root {
   scroll-margin-top: 200px;
 
 }
+
+
 
 @keyframes App-logo-spin {
   from {

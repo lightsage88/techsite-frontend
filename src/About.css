@@ -1,4 +1,10 @@
 #aboutLand {
   background-color: #edf9ff;
   background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
-  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */}
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+#aboutLand p {
+  margin-bottom: 0;
+  padding-bottom: 1em;
+}

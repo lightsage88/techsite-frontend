@@ -1,0 +1,15 @@
+#footerDiv {
+  height: auto;
+  min-height: 5vw;
+  background:black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h3 {
+  font-family: "Metal Gear Solid 2", sans-serif;
+  color: white !important; 
+  background: black;
+  margin-bottom: 0 !important;
+}

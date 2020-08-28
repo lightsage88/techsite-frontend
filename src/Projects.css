@@ -1,0 +1,50 @@
+#projectLand {
+  background-color: #141414;
+  background-image: url("https://www.transparenttextures.com/patterns/cream-pixels.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+}
+
+#projectsSectionHead {
+  color: lightsalmon;
+  margin-bottom: 0;
+}
+
+.ant-card {
+  margin: 4vw 2vw !important;
+  background-color: rgba(255,255,255,.75) !important
+}
+
+.ant-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.panelTitle {
+  font-family: "MGS2 Menu", sans-serif;
+}
+
+.ant-collapse-header {
+  color: black !important;
+}
+
+.projectDescriptionP {
+  font-family: sans-serif;
+}
+
+.projectLinksUL {
+  display: inline-block;
+  font-family: sans-serif;
+}
+
+@media only screen and (min-width: 425px) {
+  .ant-card-body {
+    flex-direction: row;
+  }
+
+  .ant-collapse {
+    width: -webkit-fill-available;
+  }
+}

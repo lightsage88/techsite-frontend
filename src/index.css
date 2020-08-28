@@ -13,5 +13,6 @@ code {
 }
 
 .iconImage {
- height: 3vw 
+ height: auto;
+ max-height: 15vw;
 }

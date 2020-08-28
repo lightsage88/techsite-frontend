@@ -4,6 +4,7 @@ import axios from 'axios'
 import Header from './components/Header'
 import MenuComponent from './components/MenuComponent'
 import Intro from './components/Intro'
+import Footer from './components/Footer'
 import Users from './components/Users'
 import About from './components/About'
 import Contact from './components/Contact'
@@ -13,6 +14,10 @@ import Projects from './components/Projects'
 import './App.css'
 import './Svg.css'
 import './About.css'
+import './Contact.css'
+import './Projects.css'
+import './Footer.css'
+import './techSection.css'
 import 'antd/dist/antd.css'
 
 
@@ -91,6 +96,7 @@ class App extends React.Component {
           <About />
           <Projects ref={this.projectsRef}/>
           <Contact />
+          <Footer />
       </div>
     );
   }
