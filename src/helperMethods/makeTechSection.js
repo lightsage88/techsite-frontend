@@ -2,10 +2,7 @@ import React from 'react'
 import { base64ToImage } from './base64ToImage'
 import { Tooltip } from 'antd'
 
-
 export const makeTechSection = (sectionName, array) => {
-  console.log('we are making a techSection for' + sectionName)
-  console.log('here is the array', array)
   let name
   let tech
   let section

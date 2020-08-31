@@ -92,6 +92,13 @@ class AddProject extends React.Component {
               <Input/>
             </Form.Item>
             <Form.Item
+              label="API/Other Repo Link"
+              name="apirepoLink"
+              onChange={e => this.props.handleChange('apirepoLink', e.target.value)}
+            >
+              <Input/>
+            </Form.Item>
+            <Form.Item
               label="Description"
               name="description"
               onChange={e => this.props.handleChange('description', e.target.value)}

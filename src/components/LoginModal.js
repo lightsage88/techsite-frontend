@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { Modal } from 'antd'
 
 
 
@@ -13,7 +14,6 @@ class LoginModal extends React.Component {
     }
 
     updateState = (id, string) => {
-        console.log(id, string)
         id === "username"
             ? this.setState({ usernameString: string })
             : this.setState({ passwordString: string})       
@@ -21,12 +21,16 @@ class LoginModal extends React.Component {
 
     attemptLogin = e => {
         e.preventDefault()
-        axios.post('/account/login', {
+        axios.post('/users/login', {
             username: this.state.usernameString,
             password: this.state.passwordString
         })
         .then(response => {
             console.log(response)
+            if(response.status === 200) {
+              console.log('success is ours!!')
+              this.props.toggleLogIn()
+            }
         })
         .catch(error => {
             console.log(error)
@@ -34,29 +38,31 @@ class LoginModal extends React.Component {
        
     }
 
-    render() {
-        return(
-            <form>
-            <h2>Username</h2>
-            <input
-                id='loginModalUsername'
-                type='text'
-                onChange={e => this.updateState('username', e.target.value)}
-            />
-
-            <h2>Password</h2>
-            <input 
-                id="loginModalPassword"
-                type='password'
-                onChange={e => this.updateState('password', e.target.value)}
-            />
-            <button
-                onClick={e => this.attemptLogin(e)}
-            >
-                LOGIN
-            </button>
-        </form>
-        )
+  render() {
+    return(
+      <div id="loginModalDiv">
+        <Modal
+          title="LOGIN"
+          visible={this.props.visible}
+          okText="LOGIN"
+          onOk={e => this.attemptLogin(e)}
+          onCancel={this.props.toggleShowLoginModal}
+        >
+          <h2>Username</h2>
+          <input
+            id='loginModalUsername'
+            type='text'
+            onChange={e => this.updateState('username', e.target.value)}
+          />
+          <h2>Password</h2>
+          <input 
+            id="loginModalPassword"
+            type='password'
+            onChange={e => this.updateState('password', e.target.value)}
+          />
+        </Modal>
+      </div>
+    )
 
     }
 

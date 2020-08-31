@@ -8,7 +8,6 @@ import Footer from './components/Footer'
 import Users from './components/Users'
 import About from './components/About'
 import Contact from './components/Contact'
-// import AnimeJSPlayground from './components/AnimeJSPlayground'
 import LoginModal from './components/LoginModal'
 import Projects from './components/Projects'
 import './App.css'
@@ -22,7 +21,7 @@ import 'antd/dist/antd.css'
 
 
 class App extends React.Component {
-  constructor(props) {
+  constructor() {
     super()
 
     this.state = {
@@ -42,8 +41,13 @@ class App extends React.Component {
 
   //make ref that changes the slm value
 
-  setShowLoginModalToTrue = () => {
-    this.setState({ showLoginModal: true })
+  toggleShowLoginModal = () => {
+    this.setState({ showLoginModal: !this.state.showLoginModal })
+  }
+
+  toggleLoggedIn = () => {
+    console.log('toggleLoggedIn is running')
+    this.setState({ loggedIn: !this.state.loggedIn })
   }
 
   getUsers = () => {
@@ -62,7 +66,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <MenuComponent />
+        <MenuComponent 
+          toggleShowLoginModal={this.toggleShowLoginModal}
+          toggleLoggedIn={this.toggleLoggedIn}
+          loggedIn={this.state.loggedIn}
+        />
         <Intro />
         {
           this.state.loggedIn
@@ -71,15 +79,7 @@ class App extends React.Component {
               />
             : ''
         }
-        {
-          this.state.loggedIn
-            ? <Users 
-                users={this.state.users}
-                action={this.setShowLoginModalToTrue}
-                showLoginModal={this.state.showLoginModal}
-              />
-            : ''
-        }
+       
         {/* <h1>Users</h1>
           {users.map(user => <div key={user.id}>{user.username}</div>)}
           <button
@@ -87,12 +87,17 @@ class App extends React.Component {
           >
             Login
           </button>
+        */}
           {
-            this.state.showLoginModal
-              ? <LoginModal ref={this.slmRef}/>
+            this.state.showLoginModal && !this.state.loggedIn
+              ? <LoginModal 
+                  visible={this.state.showLoginModal}
+                  ref={this.slmRef}
+                  toggleShowLoginModal={this.toggleShowLoginModal}
+                  toggleLogIn={this.toggleLoggedIn}
+                />
               : ''
-          } */}
-          {/* <AnimeJSPlayground /> */}
+          } 
           <About />
           <Projects ref={this.projectsRef}/>
           <Contact />

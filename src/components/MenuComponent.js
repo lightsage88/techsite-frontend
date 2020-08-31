@@ -18,11 +18,14 @@ class MenuComponent extends React.Component {
 
   handleClick = (e) => {
     this.setState({ current: e.key })
-  };
+  }
 
+  toggleShowLoginModal = () => {
+    console.log('running toggleShowLoginModal', this.props)
+    this.props.toggleShowLoginModal()
+  }
 
   render() {
-   
     return (
      <>
       <Menu
@@ -42,16 +45,25 @@ class MenuComponent extends React.Component {
                 </a>
               </Menu.Item>
               <Menu.Item key="2">
-                {/* <Link href="2" title="Projectos"> */}
                 <a 
                   onClick={(e) => this.handleClick(e)}
                   href="#projectLand">
                   Projects
                 </a>
-                {/* </Link> */}
               </Menu.Item>
-              <Menu.Item key="3">Contact</Menu.Item>
-            {/* </Anchor> */}
+              <Menu.Item key="3">
+                Contact
+              </Menu.Item>
+              <Menu.Item key="4">
+                {
+                  this.props.loggedIn
+                    ? <p onClick={() => {
+                      this.props.toggleLoggedIn() 
+                      this.props.toggleShowLoginModal()
+                    }}>Logout</p>
+                    : <p onClick={this.toggleShowLoginModal}>Login</p>
+                }
+              </Menu.Item>
           </SubMenu>
         </Menu>
      </>

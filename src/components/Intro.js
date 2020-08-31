@@ -11,6 +11,12 @@ class Intro extends React.Component {
   }
 
   helloWorld = () => {
+    const word = document.getElementById('name')
+    console.log(word)
+    if(word != null){
+      word.style.visibility  = 'visible'
+    }
+
 
     var fillyPart = document.querySelector('#name')
     function donezo() {
@@ -29,7 +35,6 @@ class Intro extends React.Component {
     })
 
     animation.finished.then(donezo);
-    
   }
 
   render() {

@@ -35,10 +35,7 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div>
-        <header>
-        Welcome, Architect
-        </header>
+      <div id="headerDiv">
         <ProjectManager 
           visible={this.state.showManageProjects}
           toggleShowManageProjects={this.toggleShowManageProjects}

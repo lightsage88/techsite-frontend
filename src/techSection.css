@@ -2,6 +2,10 @@
   font-family: sans-serif;
 }
 
+.techSection h3 {
+  font-family: "Archivo", sans-serif;
+}
+
 .techRow {
   display: flex;
   flex-direction: row;

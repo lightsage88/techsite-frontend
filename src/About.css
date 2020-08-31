@@ -1,4 +1,6 @@
 #aboutLand {
+  display: flex;
+  
   margin-top: -5vw;
   background-color: #edf9ff;
   background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
@@ -8,4 +10,8 @@
 #aboutLand p {
   margin-bottom: 0;
   padding-bottom: 1em;
+}
+
+#aboutHeadshot {
+  height: 12vw;
 }

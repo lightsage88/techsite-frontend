@@ -30,13 +30,22 @@
   color: black !important;
 }
 
+.ant-collapse-content-box p {
+  font-family: "Archivo", sans-serif;
+}
+
 .projectDescriptionP {
   font-family: sans-serif;
 }
 
 .projectLinksUL {
   display: inline-block;
-  font-family: sans-serif;
+  font-family: "Archivo", sans-serif;
+}
+
+.projectIcon {
+  height: auto;
+  max-height: 30vw;
 }
 
 @media only screen and (min-width: 425px) {
@@ -46,5 +55,9 @@
 
   .ant-collapse {
     width: -webkit-fill-available;
+  }
+
+  .projectIcon {
+    max-height: 25vw;
   }
 }

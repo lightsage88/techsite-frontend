@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import ReactDOM from 'react-dom'
 import { Modal, Tabs } from 'antd';
 import AddProject from './AddProject'
 import DeleteProject from './DeleteProject'
@@ -24,14 +23,6 @@ class ProjectManager extends React.Component {
     this.gatherTechItems()
   }
 
-  componentDidUpdate = prevState => {
-    // if(this.state !== prevState && !this.state.projectImage) {
-    //   if(localStorage.getItem("imageUrlCode")) {
-    //     this.setState({ projectImage: localStorage.getItem("imageUrlCode") })
-    //   }
-    // }
-  }
-
   handleChange = (key, value, type) => {
     console.log(key)
     if(!type) {
@@ -44,7 +35,6 @@ class ProjectManager extends React.Component {
   }
 
   addImageToProject = (id, imageObject) => {
-    console.log('addImageToProjectRunning', id, imageObject)
     let formData = new FormData()
     formData.append('image', imageObject)
     formData.append('id', id)
@@ -58,7 +48,6 @@ class ProjectManager extends React.Component {
       data: formData
     })
     .then(res => {
-      console.log(res)
       this.resetComponent(this.props.toggleShowManageProjects, this.baseState)         
     })
     .catch(err => {
@@ -72,7 +61,6 @@ class ProjectManager extends React.Component {
   }
 
   makeNewProjectRowInDB = async () => {
-    console.log('makeNewProjectRowInDB is running....and ya better go catch it', this.state)
     let stateObject = Object.assign({}, this.state, {
       ...this.state,
       technologies: this.state.technologies.toString(), 
@@ -80,12 +68,10 @@ class ProjectManager extends React.Component {
     })
     delete stateObject.projects
     delete stateObject.technologiesKnown
-    console.log(stateObject)
     axios.post('/projects/upload', {
       data: stateObject
     })
     .then(response => {
-        console.log(response)
         if(this.state.projectImage) {
          this.addImageToProject(response.data.project_id, this.state.projectImage)
         } else {
@@ -98,10 +84,8 @@ class ProjectManager extends React.Component {
   }
 
    gatherTechItems = () => {
-    console.log('gatherTechItems running')
     axios.get('/tech')
     .then(response => {
-      console.log(response.data)
       this.setState({ technologiesKnown: response.data })
     })
     .catch(err => {
@@ -110,10 +94,8 @@ class ProjectManager extends React.Component {
    }
 
   retrieveProjects = () => {
-    console.log('projectManager is getting dem \'jects ')
     return axios.get('/projects')
     .then(response => {
-      console.log(response)
       this.setState({ projects: response.data })
     })
     .catch(error => {
@@ -131,16 +113,6 @@ class ProjectManager extends React.Component {
             title="Project Manager Modal"
             visible={this.props.visible}
             onOk={() => {
-              // receive details from child element (add/edit/delete) that was open when ok was pressed
-                // include data-bit to indicate what kind of operation it is
-              // If the operation is ADD:
-                //  call method that allows us to add new project to our database via our backend server
-              // If the operation is EDIT:
-                // call method that allows us to edit existing project to our database via our backend server
-              // If the operation is DELETE:
-                // call method taht allows us to DELETE existing project in our database via our b-e server
-             // then at the end run this ---> this.props.toggleShowManageProjects()
-              console.log(this.state)
               this.makeNewProjectRowInDB()
               }
             }

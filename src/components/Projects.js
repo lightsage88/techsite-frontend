@@ -7,7 +7,6 @@ var _ = require('lodash')
 const { Panel } = Collapse
 const { Meta } = Card
 
-
 class Projects extends React.Component {
   constructor() {
     super()
@@ -47,9 +46,6 @@ class Projects extends React.Component {
   }
 
   establishTechIcons = object => {
-    console.log('running establish tech icons', object)
-    console.log(typeof(object))
-    // console.log(Object.values(object) || 'nada')
     return (
       <div>
         Frameworks
@@ -81,10 +77,6 @@ class Projects extends React.Component {
     })
 
     technologiesUsed = technologiesUsed.sort((a,b) => (a.technology_type_id > b.technology_type_id) ? 1 : -1)
-    console.log(technologiesUsed)
-
-
-    console.log(  _.groupBy(technologiesUsed, 'technology_type_id'))
     let techGroups = _.groupBy(technologiesUsed, 'technology_type_id'.toString())
     return techGroups
   }
@@ -94,7 +86,6 @@ class Projects extends React.Component {
   }
 
   render() {
-    console.log('projects rendering', this.state)
     const projects = (this.state.data).map((item, index) => {
       let techGroups = this.getTechGroups(item)
       let languages = techGroups[1] || []
@@ -104,6 +95,8 @@ class Projects extends React.Component {
       let testingLibraries = techGroups[5]
       let uiFWS = techGroups[6]
       let cms = techGroups[7]
+      let database = techGroups[8]
+      let ci = techGroups[9]
       const imageSrc = base64ToImage(item)
  
       return (
@@ -137,37 +130,12 @@ class Projects extends React.Component {
                 {makeTechSection("Testing Libraries", testingLibraries)}
                 {makeTechSection("UI Frameworks", uiFWS)}
                 {makeTechSection("Content Management Systems", cms)}
+                {makeTechSection("Databases", database)}
+                {makeTechSection("Continuous Integrations", ci)}
               </Panel>
             </Collapse>
           </Card>
         </div>
-        // <div className="projectEntry" key={index}>
-        //   <div className="projectIconDiv">
-        //     <a href={item.projectlink}>
-        //       <img className="projectIcon" src={imageSrc}/>
-        //     </a>
-        //   </div>
-        //   <div className="projectDetails">
-        //     <h3>{item.name}</h3>
-        //     <p>{item.summary}</p>
-        //       <div>
-        //         <h5>Technologies:</h5>
-        //         {makeTechSection("Languages", languages)}
-        //         {makeTechSection("Front-End Frameworks", frontEndFWS)}
-        //         {makeTechSection("Back-End Frameworks", backEndFWS)}
-        //         {makeTechSection("Libraries", libraries)}
-        //         {makeTechSection("Testing Libraries", testingLibraries)}
-        //         {makeTechSection("UI Frameworks", uiFWS)}
-        //         {makeTechSection("Content Management Systems", cms)}
-        //       </div>
-        //       <div>
-        //         <h5>Links:</h5>
-        //         <a href={item.projectlink}>Project Link</a>
-        //         <br/>
-        //         <a href={item.repolink}>Repo Link</a>
-        //       </div>
-        //   </div>
-        // </div>
       )
     })
 
