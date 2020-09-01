@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'Metal Gear Solid 2';
-  src: local('Metal Gear Solid 2'), url('./fonts/MGS2.ttf') format('ttf');
+  src: local('Metal Gear Solid 2'), url('./fonts/MGS2.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'MGS2Menu';
-  src: local('MGS2Menu'), url('./fonts/MGS2MENU.TTF') format('ttf');
+  font-family: 'MGS2 Menu';
+  src: local('MGS2 Menu'), url('./fonts/MGS2MENU.TTF') format('truetype');
 }
 
 body {
