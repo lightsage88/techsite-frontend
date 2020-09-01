@@ -68,7 +68,7 @@ class ProjectManager extends React.Component {
     })
     delete stateObject.projects
     delete stateObject.technologiesKnown
-    axios.post('/projects/upload', {
+    axios.post('https://sleepy-hollows-70516.herokuapp.com/projects/upload', {
       data: stateObject
     })
     .then(response => {
@@ -84,7 +84,7 @@ class ProjectManager extends React.Component {
   }
 
    gatherTechItems = () => {
-    axios.get('/tech')
+    axios.get('https://sleepy-hollows-70516.herokuapp.com/tech')
     .then(response => {
       this.setState({ technologiesKnown: response.data })
     })
@@ -94,7 +94,7 @@ class ProjectManager extends React.Component {
    }
 
   retrieveProjects = () => {
-    return axios.get('/projects')
+    return axios.get('https://sleepy-hollows-70516.herokuapp.com/projects')
     .then(response => {
       this.setState({ projects: response.data })
     })

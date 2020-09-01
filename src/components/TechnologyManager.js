@@ -37,7 +37,7 @@ class TechnologyManager extends React.Component {
       technologyImage: null
     })
     
-    return axios.post('https://sleepy-hollows-70516.herokuapp.com//tech/upload', {
+    return axios.post('https://sleepy-hollows-70516.herokuapp.com/tech/upload', {
       data: dataObject
     })
     .then(response => {

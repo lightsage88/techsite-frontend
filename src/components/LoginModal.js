@@ -21,7 +21,7 @@ class LoginModal extends React.Component {
 
     attemptLogin = e => {
         e.preventDefault()
-        axios.post('https://sleepy-hollows-70516.herokuapp.com//users/login', {
+        axios.post('https://sleepy-hollows-70516.herokuapp.com/users/login', {
             username: this.state.usernameString,
             password: this.state.passwordString
         })

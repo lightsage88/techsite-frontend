@@ -26,7 +26,7 @@ class Projects extends React.Component {
   }
 
   retrieveTechnologies = () => {
-    return axios.get('/tech')
+    return axios.get('https://sleepy-hollows-70516.herokuapp.com/tech')
     .then(response => {
       this.setState({ techData: response.data})
     })
@@ -36,7 +36,7 @@ class Projects extends React.Component {
   }
 
   retrieveProjects = () => {
-    return axios.get('/projects')
+    return axios.get('https://sleepy-hollows-70516.herokuapp.com/projects')
     .then(response => {
       this.setState({ data: response.data })
     })
