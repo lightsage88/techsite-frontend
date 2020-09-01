@@ -51,7 +51,7 @@ class App extends React.Component {
   }
 
   getUsers = () => {
-    axios('/users')
+    axios('https://sleepy-hollows-70516.herokuapp.com//users')
       .then(data => {
         
         console.log(data)
