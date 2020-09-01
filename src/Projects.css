@@ -58,9 +58,9 @@
 }
 
 @media only screen and (min-width: 425px) {
-  .ant-card-body {
+  /* .ant-card-body {
     flex-direction: row;
-  }
+  } */
 
   .ant-collapse {
     width: -webkit-fill-available;
@@ -68,5 +68,11 @@
 
   .projectIcon {
     max-height: 25vw;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .ant-card-body {
+    flex-direction: row;
   }
 }
