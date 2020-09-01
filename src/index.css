@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'Metal Gear Solid 2';
+  src: local('Metal Gear Solid 2'), url('./fonts/MGS2.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'MGS2Menu';
+  src: local('MGS2Menu'), url('./fonts/MGS2MENU.TTF') format('ttf');
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

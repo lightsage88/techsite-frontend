@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-// import {ReactComponent as PhilanthropyLogo} from './svgs/philanIcon.svg'
 import Header from './components/Header'
 import MenuComponent from './components/MenuComponent'
 import Intro from './components/Intro'
