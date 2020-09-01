@@ -1,5 +1,5 @@
 #aboutLand {
-  display: flex;
+  /* display: flex; */
   
   margin-top: -5vw;
   background-color: #edf9ff;
@@ -9,9 +9,24 @@
 
 #aboutLand p {
   margin-bottom: 0;
+  padding:2vw;
   padding-bottom: 1em;
+  font-family: "Archivo", sans-serif;
+}
+
+#aboutLandInfoDiv {
+  display: inline-block;
 }
 
 #aboutHeadshot {
-  height: 12vw;
+  height: 25vh;
+  float: left;
+  margin: 2vw;
+
+}
+
+@media only screen and (min-width: 768px) {
+  #aboutHeadshot {
+    
+  }
 }
