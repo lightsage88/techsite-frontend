@@ -11,7 +11,6 @@ class About extends React.Component {
     return (
       <div id="aboutLand">
         <h1 className="sectionHead" id="aboutLandHead">About Adrian</h1>
-        <img id="aboutHeadshot" src={headshot} alt="adrianRosales"/>
         <p>
         I grew up in Portland, OR and earned my Bachelors and Masters of Music degrees in Operatic Performance at the University of Southern California. 
         Since graduating, I have enjoyed a busy performance schedule across the country, but felt my innate curiosity and joy for working with technology was being neglected. 
