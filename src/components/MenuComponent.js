@@ -31,7 +31,7 @@ class MenuComponent extends React.Component {
       <Menu
           theme="dark"
           onClick={this.handleClick}
-          defaultOpenKeys={['sub1']}
+          // defaultOpenKeys={['sub1']}
           selectedKeys={[this.state.current]}
           mode="inline"
         >
@@ -52,7 +52,11 @@ class MenuComponent extends React.Component {
                 </a>
               </Menu.Item>
               <Menu.Item key="3">
-                Contact
+                <a
+                  onCLick={(e) => this.handleClick(e)}
+                  href="#contactLand">
+                  Contact
+                </a>
               </Menu.Item>
               <Menu.Item key="4">
                 {

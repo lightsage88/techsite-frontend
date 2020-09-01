@@ -22,6 +22,11 @@
   flex-direction: column;
 }
 
+.ant-card-meta-title {
+  font-family: "Metal Gear Solid 2", sans-serif;
+  font-size: 2rem !important;
+}
+
 .panelTitle {
   font-family: "MGS2 Menu", sans-serif;
 }
@@ -41,6 +46,10 @@
 .projectLinksUL {
   display: inline-block;
   font-family: "Archivo", sans-serif;
+}
+
+.projectLinkDiv {
+  padding: 2vw;
 }
 
 .projectIcon {

@@ -11,4 +11,14 @@
   flex-direction: row;
   justify-content: space-evenly;
   margin-bottom: 1vw;
+  padding: 1vw;
 }
+
+.techRow a {
+  border: solid;
+  height: 5vw;
+}
+
+.iconImage {
+  height: inherit;
+ }
