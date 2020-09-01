@@ -23,7 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:4007",
+  "proxy": "https://sleepy-hollows-70516.herokuapp.com/",
   "eslintConfig": {
     "extends": "react-app"
   },
