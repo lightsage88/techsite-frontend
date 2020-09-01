@@ -1,10 +1,7 @@
 language: node_js
 node_js: node
 deploy:
-  provider: heroku
-  api_key:
-    secure: TCP0I8brSjvrutx9ihOceGNEcsehxmPn/Z68SuUBGiJvgPTx7Ka39HOFSKbTgy99idT4ppzd4kEGD9BYJ9vnu+41kUn5So8y3s5nQbjLg03u/aCkIXX3xG99Fjns8LpAVaHH3ySp/6DlDmwo/8mscEym2I+8dgLxqqiLRMy8v4F1MRK5MIE/fS9b5/EheuF2qJ006oybRML9NB4gRyUbQgxQ6VTrNLylYSC+HnDyYYYsXFXcc3ub7MLQklzkEyqVitl+pAeNZFu4wRRQbflvyaXsk+aBAXvb0sUW5CdqSvaJRLmftqsHTbt34geHz3pbzSS4B6lDVTQR1W8Fw9zrb+457SPcoUMoSwgbzvtV0g20WJ5wkDorqoTTliTtGnpYOqc5gF09ZalsoA6xr3398C36mLLoVHx2GlkxBgl/A7dIHvC/YrJrLk+mWGEqK4EbpUZ8bwlnelG1U+LEjYyHJ3yhA3EWS7Ar/oLDcN7KKxChfOBiOUSCGNtmuIYCwBP26JwEOY7gj69hAzp+zOolbk/VPV0ozmVFIgyajRQss/pQOyt06dPk8C33Vk2biiF4dj3L0veVbS+ftXCkB1btd0G2RTKMoTdBHc3WRk6olM94qVTIOR7RBOp2y8jazl8JnbNOY9avm+HfrGJBkGZPJDcZ9ey1yUwUj5rPCWTTd8Q=
-  app: shielded-fortress-99813
-  on:
-    repo: lightsage88/techsite-frontend
-  skip_cleanup: 'true'
+  provider: netlify
+  site: a57217a9-e590-44a5-a627-1a23338177cf
+  auth: Walruses8
+  

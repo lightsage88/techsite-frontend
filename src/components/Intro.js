@@ -15,6 +15,10 @@ class Intro extends React.Component {
     console.log(word)
     if(word != null){
       word.style.visibility  = 'visible'
+    } else {
+      setTimeout(()=> {
+        this.helloWorld()
+      },2000)
     }
 
 
