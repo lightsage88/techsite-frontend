@@ -11,7 +11,7 @@ class DeleteProject extends React.Component {
   }
 
   deleteProject = id => {
-    return axios.post('/projects/delete', {
+    return axios.post('https://sleepy-hollows-70516.herokuapp.com/projects/delete', {
       project_id: id
     })
     .then(response => {

@@ -27,7 +27,7 @@ class AddTechnology extends React.Component {
 
   gatherTechItems = () => {
     console.log('gatherTechItems running')
-    axios.get('/tech')
+    axios.get('https://sleepy-hollows-70516.herokuapp.com/tech')
     .then(response => {
       console.log(response.data)
       this.setState({ 
@@ -40,7 +40,7 @@ class AddTechnology extends React.Component {
   }
 
   retrieveTechnologies = () => {
-    return axios.get('/projects')
+    return axios.get('https://sleepy-hollows-70516.herokuapp.com/projects')
     .then(response => {
       console.log(response.data)
       this.setState({ 
@@ -54,7 +54,7 @@ class AddTechnology extends React.Component {
   }
 
   retrieveTechTypes = () => {
-    return axios.get('/tech/techTypes')
+    return axios.get('https://sleepy-hollows-70516.herokuapp.com/tech/techTypes')
     .then(response => {
       console.log('here are the tech-types', response.data)
       this.setState({ techTypes: response.data })

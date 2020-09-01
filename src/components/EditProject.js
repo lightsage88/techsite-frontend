@@ -45,7 +45,7 @@ class EditProject extends React.Component {
   
 
   retrieveProjects = () => {
-    return axios.get('/projects')
+    return axios.get('https://sleepy-hollows-70516.herokuapp.com/projects')
     .then(response => {
       console.log(response.data)
       this.setState({ 
