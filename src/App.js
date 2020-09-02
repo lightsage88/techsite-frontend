@@ -45,15 +45,12 @@ class App extends React.Component {
   }
 
   toggleLoggedIn = () => {
-    console.log('toggleLoggedIn is running')
     this.setState({ loggedIn: !this.state.loggedIn })
   }
 
   getUsers = () => {
     axios('https://sleepy-hollows-70516.herokuapp.com/users')
       .then(data => {
-        
-        console.log(data)
         this.setState({ users: data.data })
       })
   }
