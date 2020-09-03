@@ -40,7 +40,7 @@ class ProjectManager extends React.Component {
     formData.append('id', id)
 
     return axios({
-      url: "/projects/uploadProjectPicture",
+      url: "https://sleepy-hollows-70516.herokuapp.com/projects/uploadProjectPicture",
       method: "POST",
       headers: {
         'Content-Type': 'multipart/form-data'

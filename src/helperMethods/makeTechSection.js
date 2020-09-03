@@ -11,13 +11,11 @@ export const makeTechSection = (sectionName, array) => {
       let techImage = base64ToImage(item)
       
       return (
-        // <div key={index}>
           <a key={index} href={item.tech_website}>
             <Tooltip placement="topLeft" title={item.name} arrowPointAtCenter>
               <img className="iconImage" src={techImage} />
             </Tooltip>
           </a>
-        // </div>
       )
     })
 

@@ -78,24 +78,15 @@ class App extends React.Component {
               />
             : ''
         }
-       
-        {/* <h1>Users</h1>
-          {users.map(user => <div key={user.id}>{user.username}</div>)}
-          <button
-            onClick={e => this.setState({ showLoginModal: true })}
-          >
-            Login
-          </button>
-        */}
-          {
-            this.state.showLoginModal && !this.state.loggedIn
-              ? <LoginModal 
-                  visible={this.state.showLoginModal}
-                  ref={this.slmRef}
-                  toggleShowLoginModal={this.toggleShowLoginModal}
-                  toggleLogIn={this.toggleLoggedIn}
-                />
-              : ''
+        {
+          this.state.showLoginModal && !this.state.loggedIn
+            ? <LoginModal 
+                visible={this.state.showLoginModal}
+                ref={this.slmRef}
+                toggleShowLoginModal={this.toggleShowLoginModal}
+                toggleLogIn={this.toggleLoggedIn}
+              />
+            : ''
           } 
           <About />
           <Projects ref={this.projectsRef}/>
