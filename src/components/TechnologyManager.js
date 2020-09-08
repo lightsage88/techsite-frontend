@@ -60,7 +60,7 @@ class TechnologyManager extends React.Component {
     formData.append('id', id)
 
     return axios({
-      url: "https://sleepy-hollows-70516.herokuapp.com//tech/uploadTechImage",
+      url: "https://sleepy-hollows-70516.herokuapp.com/tech/uploadTechImage",
       method: "POST",
       headers: {
         'Content-Type': 'multipart/form-data'
