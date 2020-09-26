@@ -61,12 +61,7 @@ class AnimeJSPlayground extends React.Component {
 </svg>
       <video className="svgBodyVid" no-controls autoPlay="autoplay" loop="loop" muted>
           <source src={vid} type="video/mp4"/>
-          
         </video>
-      
-
-
-
       </div>
       </div>
     )

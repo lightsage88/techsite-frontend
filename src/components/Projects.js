@@ -15,6 +15,7 @@ class Projects extends React.Component {
       data: []
     }
     this.myRef = React.createRef()
+    this.backendURL = "http://localhost:4007"
   }
 
   UNSAFE_componentWillMount = () => {
@@ -22,11 +23,14 @@ class Projects extends React.Component {
   }
 
   componentDidMount = () => {
+    if(process.env.NODE_ENV === "production") {
+      this.backendURL = process.env.REACT_APP_BACKEND_URL
+    }
     this.retrieveProjects()
   }
 
   retrieveTechnologies = () => {
-    return axios.get('https://sleepy-hollows-70516.herokuapp.com/tech')
+    return axios.get(`${this.backendURL}/tech`)
     .then(response => {
       this.setState({ techData: response.data})
     })
@@ -36,7 +40,7 @@ class Projects extends React.Component {
   }
 
   retrieveProjects = () => {
-    return axios.get('https://sleepy-hollows-70516.herokuapp.com/projects')
+    return axios.get(`${this.backendURL}/projects`)
     .then(response => {
       this.setState({ data: response.data })
     })

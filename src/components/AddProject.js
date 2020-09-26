@@ -35,7 +35,6 @@ class AddProject extends React.Component {
   render() {
     console.log(this.state)
     const technologiesKnown = this.props.technologiesKnown.map((item, index) => {
-      console.log('wolcochoHOSO', item)
       const imageSrc = base64ToImage(item)
       
       return (

@@ -11,6 +11,13 @@ class LoginModal extends React.Component {
             usernameString: '',
             passwordString: ''
         }
+        this.backendURL = "http://localhost:4007"
+    }
+
+    componentDidMount = () => {
+      if(process.env.NODE_ENV === "production") {
+        this.backendURL = process.env.REACT_APP_BACKEND_URL
+      }
     }
 
     updateState = (id, string) => {
@@ -21,7 +28,7 @@ class LoginModal extends React.Component {
 
     attemptLogin = e => {
         e.preventDefault()
-        axios.post('https://sleepy-hollows-70516.herokuapp.com/users/login', {
+        axios.post(`${this.backendURL}/users/login`, {
             username: this.state.usernameString,
             password: this.state.passwordString
         })

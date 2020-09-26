@@ -12,6 +12,15 @@ class TechnologyManager extends React.Component {
     this.state = {}
     //establish baseState
     this.baseState = this.state
+    this.backendURL = "http://localhost:4007"
+  }
+
+  componentDidMount = () => {
+    if(process.env.NODE_ENV === "production") {
+      this.backendURL = process.env.REACT_APP_BACKEND_URL
+    } else {
+      // backendURL = "localhost:4007"
+    }
   }
 
   resetComponent = (toggleMethod, baseState) => {
@@ -37,7 +46,7 @@ class TechnologyManager extends React.Component {
       technologyImage: null
     })
     
-    return axios.post('https://sleepy-hollows-70516.herokuapp.com/tech/upload', {
+    return axios.post(`${this.backendURL}/tech/upload`, {
       data: dataObject
     })
     .then(response => {
@@ -60,7 +69,7 @@ class TechnologyManager extends React.Component {
     formData.append('id', id)
 
     return axios({
-      url: "https://sleepy-hollows-70516.herokuapp.com/tech/uploadTechImage",
+      url: `${this.backendURL}/tech/uploadTechImage`,
       method: "POST",
       headers: {
         'Content-Type': 'multipart/form-data'

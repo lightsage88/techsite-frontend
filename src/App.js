@@ -28,13 +28,16 @@ class App extends React.Component {
       showLoginModal: false,
       loggedIn: false
     }
-
+    this.backendURL = "http://localhost:4007"
     this.slmRef = React.createRef()
     this.projectsRef = React.createRef()
   }
   
 
   componentDidMount = () => {
+    if(process.env.NODE_ENV === "production") {
+      this.backendURL = process.env.REACT_APP_BACKEND_URL
+    }
     this.getUsers()
   }
 
@@ -49,7 +52,8 @@ class App extends React.Component {
   }
 
   getUsers = () => {
-    axios('https://sleepy-hollows-70516.herokuapp.com/users')
+    // axios('https://sleepy-hollows-70516.herokuapp.com/users')
+    axios(`${this.backendURL}/users`)
       .then(data => {
         this.setState({ users: data.data })
       })
@@ -60,6 +64,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(process.env.NODE_ENV, process.env.REACT_APP_BACKEND_URL)
     return (
       <div className="App">
         <MenuComponent 

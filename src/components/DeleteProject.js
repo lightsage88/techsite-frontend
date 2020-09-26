@@ -6,12 +6,17 @@ import { Button } from 'antd';
 class DeleteProject extends React.Component {
   constructor() {
     super()
+    this.backendURL = "http://localhost:4007"
+  }
 
-  
+  componentDidMount = () => {
+    if(process.env.NODE_ENV === "production") {
+      this.backendURL = process.env.REACT_APP_BACKEND_URL
+    }
   }
 
   deleteProject = id => {
-    return axios.post('https://sleepy-hollows-70516.herokuapp.com/projects/delete', {
+    return axios.post(`${this.backendURL}/projects/delete`, {
       project_id: id
     })
     .then(response => {
@@ -38,8 +43,6 @@ class DeleteProject extends React.Component {
       )
     })
 
-    
-
     return (
       <div>
         {projects}
@@ -47,7 +50,5 @@ class DeleteProject extends React.Component {
     )
   }
 }
-
-
 
 export default DeleteProject

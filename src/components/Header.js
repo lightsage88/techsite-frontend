@@ -16,14 +16,12 @@ class Header extends React.Component {
   }
 
   showProjectManager = () => {
-    console.log('showprojectmanager running')
     return (
       <ProjectManager />
     )
   }
 
   toggleShowManageProjects = () => {
-    console.log('toggleShowManageProjects')
     this.setState({ showManageProjects: !this.state.showManageProjects })
   }
   

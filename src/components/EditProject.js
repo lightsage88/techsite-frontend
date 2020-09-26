@@ -16,7 +16,7 @@ class EditProject extends React.Component {
       children: []
     }
 
-    
+    this.backendURL = "http://localhost:4007"
   }
 
   // const children = [];
@@ -25,6 +25,9 @@ class EditProject extends React.Component {
 
 
   componentDidMount = () => {
+    if(process.env.NODE_ENV === "production") {
+      this.backendURL = process.env.REACT_APP_BACKEND_URL
+    }
     this.retrieveProjects()
   }
 
@@ -45,7 +48,7 @@ class EditProject extends React.Component {
   
 
   retrieveProjects = () => {
-    return axios.get('https://sleepy-hollows-70516.herokuapp.com/projects')
+    return axios.get(`${this.backendURL}/projects`)
     .then(response => {
       console.log(response.data)
       this.setState({ 

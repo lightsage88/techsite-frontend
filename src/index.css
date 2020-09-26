@@ -4,6 +4,11 @@
 }
 
 @font-face {
+  font-family: 'Krona';
+  src: local('Krona'), url('./fonts/KronaOne-Regular.ttf') format('truetype');
+}
+
+@font-face {
   font-family: 'MGS2 Menu';
   src: local('MGS2 Menu'), url('./fonts/MGS2MENU.TTF') format('truetype');
 }

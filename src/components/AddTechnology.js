@@ -17,9 +17,13 @@ class AddTechnology extends React.Component {
       technologiesKnown: [],
       techTypes: []
     }
+    this.backendURL = "http://localhost:4007"
   }
 
   componentDidMount = () => {
+    if(process.env.NODE_ENV === "production") {
+      this.backendURL = process.env.REACT_APP_BACKEND_URL
+    }
     this.retrieveTechnologies()
     this.gatherTechItems()
     this.retrieveTechTypes()
@@ -27,7 +31,8 @@ class AddTechnology extends React.Component {
 
   gatherTechItems = () => {
     console.log('gatherTechItems running')
-    axios.get('https://sleepy-hollows-70516.herokuapp.com/tech')
+    // axios.get('https://sleepy-hollows-70516.herokuapp.com/tech')
+    axios.get(`${this.backendURL}/tech`)
     .then(response => {
       console.log(response.data)
       this.setState({ 
@@ -40,7 +45,8 @@ class AddTechnology extends React.Component {
   }
 
   retrieveTechnologies = () => {
-    return axios.get('https://sleepy-hollows-70516.herokuapp.com/projects')
+    // return axios.get('https://sleepy-hollows-70516.herokuapp.com/projects')
+    return axios.get(`${this.backendURL}/projects`)
     .then(response => {
       console.log(response.data)
       this.setState({ 
@@ -54,7 +60,8 @@ class AddTechnology extends React.Component {
   }
 
   retrieveTechTypes = () => {
-    return axios.get('https://sleepy-hollows-70516.herokuapp.com/tech/techTypes')
+    // return axios.get('https://sleepy-hollows-70516.herokuapp.com/tech/techTypes')
+    return axios.get(`${this.backendURL}/tech/techTypes`)
     .then(response => {
       console.log('here are the tech-types', response.data)
       this.setState({ techTypes: response.data })

@@ -16,9 +16,13 @@ class ProjectManager extends React.Component {
     }
     //preserve initial state in a new object
     this.baseState = this.state
+    this.backendURL = "http://localhost:4007"
   }
 
   componentDidMount = () => {
+    if(process.env.NODE_ENV === "production") {
+      this.backendURL = process.env.REACT_APP_BACKEND_URL
+    }
     this.retrieveProjects()
     this.gatherTechItems()
   }
@@ -40,7 +44,7 @@ class ProjectManager extends React.Component {
     formData.append('id', id)
 
     return axios({
-      url: "https://sleepy-hollows-70516.herokuapp.com/projects/uploadProjectPicture",
+      url: `${this.backendURL}/projects/uploadProjectPicture`,
       method: "POST",
       headers: {
         'Content-Type': 'multipart/form-data'
@@ -68,7 +72,7 @@ class ProjectManager extends React.Component {
     })
     delete stateObject.projects
     delete stateObject.technologiesKnown
-    axios.post('https://sleepy-hollows-70516.herokuapp.com/projects/upload', {
+    axios.post(`${this.backendURL}/projects/upload`, {
       data: stateObject
     })
     .then(response => {
@@ -84,7 +88,7 @@ class ProjectManager extends React.Component {
   }
 
    gatherTechItems = () => {
-    axios.get('https://sleepy-hollows-70516.herokuapp.com/tech')
+    axios.get(`${this.backendURL}/tech`)
     .then(response => {
       this.setState({ technologiesKnown: response.data })
     })
@@ -94,7 +98,7 @@ class ProjectManager extends React.Component {
    }
 
   retrieveProjects = () => {
-    return axios.get('https://sleepy-hollows-70516.herokuapp.com/projects')
+    return axios.get(`${this.backendURL}/projects`)
     .then(response => {
       this.setState({ projects: response.data })
     })

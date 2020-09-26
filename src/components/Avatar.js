@@ -4,16 +4,17 @@ import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 
 
 class Avatar extends React.Component {
-  state = {
+  constructor() {
+    super()
+    this.state = {
     loading: false,
-  };
+    }
+  }
+  
 
   componentDidUpdate = (prevState) => {
-    console.log("you eat my sandwhiches boy?")
     if(prevState !== this.state) {
       if(this.state.imageUrl) {
-        console.log('you READY TO JOIN THE ARMY?', this.state.imageUrl)
-        // this.props.action(this.state.imageUrl)
         localStorage.setItem('imageUrlCode', this.state.imageUrl)
       }
     }
@@ -22,12 +23,11 @@ class Avatar extends React.Component {
   handleChange = info => {
     if (info.file.status === 'uploading') {
       this.setState({ loading: true });
-      return;
+      return
     }
     if (info.file.status === 'done') {
       // Get this url from response in real world.
       this.getBase64(info.file.originFileObj, imageUrl => {
-        console.log('this is da imageUrl', imageUrl)
         this.setState({
           imageUrl,
           loading: false,

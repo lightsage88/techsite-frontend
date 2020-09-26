@@ -6,7 +6,6 @@ var gmail = require('../images/google-gmail.svg')
 class Contact extends React.Component {
   constructor() {
     super()
-
   }
 
   render() {
