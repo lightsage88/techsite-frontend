@@ -36,7 +36,7 @@ class App extends React.Component {
 
   componentDidMount = () => {
     if(process.env.NODE_ENV === "production") {
-      this.backendURL = process.env.REACT_APP_BACKEND_URL
+      this.backendURL = "https://sleepy-hollows-70516.herokuapp.com"
     }
     this.getUsers()
   }
