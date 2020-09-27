@@ -45,47 +45,6 @@ class Projects extends React.Component {
     })
   }
 
-  openTechModal = (index, techGroups) => {
-    this.setState({ 
-      techModalVisible: true,
-      techGroups: techGroups
-    })
-    console.log(index, techGroups)
-    this.techModalStuff(index)
-  }
-
-  closeTechModal = () => {
-    this.setState({
-      techModalVisible: false,
-      techGroups: null
-    })
-  }
-
-  techModalStuff = (index) => {
-    console.log(this.state.data[index])
-    let techGroups = this.getTechGroups(this.state.data[index])
-      let languages = techGroups[1] || []
-      let frontEndFWS = techGroups[2]
-      let backEndFWS = techGroups[3]
-      let libraries = techGroups[4]
-      let testingLibraries = techGroups[5]
-      let uiFWS = techGroups[6]
-      let cms = techGroups[7]
-      let database = techGroups[8]
-      let ci = techGroups[9]
-    this.modalStuff = <div>
-      {makeTechSection("Languages", languages)}
-      {makeTechSection("Front-End Frameworks", frontEndFWS)}
-      {makeTechSection("Back-End Frameworks", backEndFWS)}
-      {makeTechSection("Libraries", libraries)}
-      {makeTechSection("Testing Libraries", testingLibraries)}
-      {makeTechSection("UI Frameworks", uiFWS)}
-      {makeTechSection("Content Management Systems", cms)}
-      {makeTechSection("Databases", database)}
-      {makeTechSection("Continuous Integrations", ci)}
-    </div>   
-  }
-
   retrieveProjects = () => {
     return axios.get(`${this.backendURL}/projects`)
     .then(response => {
@@ -185,9 +144,6 @@ class Projects extends React.Component {
                 {makeTechSection("Continuous Integrations", ci)}
               </Panel>
             </Collapse>
-            {/* <Button className="techButton" type="primary" onClick={()=>this.openTechModal(index, techGroups)}>
-              Project Tech
-            </Button> */}
           </Card>
         </div>
       )
