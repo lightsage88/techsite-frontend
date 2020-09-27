@@ -19,8 +19,7 @@ class Projects extends React.Component {
       techModalVisible: false
     }
     this.myRef = React.createRef()
-    // this.backendURL = "http://localhost:4007"
-    this.backendURL = "http://10.0.0.233:4007"
+    this.backendURL = "http://localhost:4007"
     this.modalStuff = ''
   }
 
