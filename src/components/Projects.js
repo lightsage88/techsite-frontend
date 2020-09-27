@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { SpinnerRoundFilled } from 'spinners-react'
 
-import { Card, Collapse } from 'antd'
+import { Card, Collapse, Modal, Button } from 'antd'
 import { base64ToImage } from '../helperMethods/base64ToImage'
 import { makeTechSection } from '../helperMethods/makeTechSection'
 var _ = require('lodash')
@@ -14,10 +14,13 @@ class Projects extends React.Component {
     super()
 
     this.state = {
-      data: []
+      data: [],
+      techGroups: [],
+      techModalVisible: false
     }
     this.myRef = React.createRef()
     this.backendURL = "http://localhost:4007"
+    this.modalStuff = ''
   }
 
   UNSAFE_componentWillMount = () => {
@@ -39,6 +42,47 @@ class Projects extends React.Component {
     .catch(err => {
       console.error(err)
     })
+  }
+
+  openTechModal = (index, techGroups) => {
+    this.setState({ 
+      techModalVisible: true,
+      techGroups: techGroups
+    })
+    console.log(index, techGroups)
+    this.techModalStuff(index)
+  }
+
+  closeTechModal = () => {
+    this.setState({
+      techModalVisible: false,
+      techGroups: null
+    })
+  }
+
+  techModalStuff = (index) => {
+    console.log(this.state.data[index])
+    let techGroups = this.getTechGroups(this.state.data[index])
+      let languages = techGroups[1] || []
+      let frontEndFWS = techGroups[2]
+      let backEndFWS = techGroups[3]
+      let libraries = techGroups[4]
+      let testingLibraries = techGroups[5]
+      let uiFWS = techGroups[6]
+      let cms = techGroups[7]
+      let database = techGroups[8]
+      let ci = techGroups[9]
+    this.modalStuff = <div>
+      {makeTechSection("Languages", languages)}
+      {makeTechSection("Front-End Frameworks", frontEndFWS)}
+      {makeTechSection("Back-End Frameworks", backEndFWS)}
+      {makeTechSection("Libraries", libraries)}
+      {makeTechSection("Testing Libraries", testingLibraries)}
+      {makeTechSection("UI Frameworks", uiFWS)}
+      {makeTechSection("Content Management Systems", cms)}
+      {makeTechSection("Databases", database)}
+      {makeTechSection("Continuous Integrations", ci)}
+    </div>   
   }
 
   retrieveProjects = () => {
@@ -128,7 +172,7 @@ class Projects extends React.Component {
                 </ul>
                 
               </Panel>
-              <Panel className="panelTitle" header="Tech" key="3">
+              <Panel visible="false" className="panelTitle techPanel" header="Tech" key="3">
                 {makeTechSection("Languages", languages)}
                 {makeTechSection("Front-End Frameworks", frontEndFWS)}
                 {makeTechSection("Back-End Frameworks", backEndFWS)}
@@ -140,16 +184,27 @@ class Projects extends React.Component {
                 {makeTechSection("Continuous Integrations", ci)}
               </Panel>
             </Collapse>
+            <Button className="techButton" type="primary" onClick={()=>this.openTechModal(index, techGroups)}>
+              Project Tech
+            </Button>
           </Card>
         </div>
       )
     })
-
+   
     return (
       <div id="projectLand">
         <h1 className="sectionHead" id="projectsSectionHead">
           Projects
         </h1>
+        <Modal
+          visible={this.state.techModalVisible}
+          title="Tech"
+          onCancel={() => this.closeTechModal()}
+          footer={null}
+        >
+          {this.modalStuff}
+        </Modal>
         <div
           id="projectBox"
         >

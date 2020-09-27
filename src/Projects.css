@@ -1,3 +1,12 @@
+.techButton {
+  visibility: visible
+}
+
+.techPanel {
+  visibility: hidden;
+  height: 0;
+}
+
 #projectLand {
   background-color: #141414;
   background-image: url("https://www.transparenttextures.com/patterns/cream-pixels.png");
@@ -74,5 +83,16 @@
 @media only screen and (min-width:768px) {
   .ant-card-body {
     flex-direction: row;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .techButton {
+    visibility: hidden;
+  }
+
+  .techPanel {
+    visibility: visible;
+    height: initial;
   }
 }
