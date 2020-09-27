@@ -1,5 +1,7 @@
 import React from 'react'
 import axios from 'axios'
+import { SpinnerRoundFilled } from 'spinners-react'
+
 import { Card, Collapse } from 'antd'
 import { base64ToImage } from '../helperMethods/base64ToImage'
 import { makeTechSection } from '../helperMethods/makeTechSection'
@@ -90,7 +92,7 @@ class Projects extends React.Component {
   }
 
   render() {
-    const projects = (this.state.data).map((item, index) => {
+    let projects = (this.state.data).map((item, index) => {
       let techGroups = this.getTechGroups(item)
       let languages = techGroups[1] || []
       let frontEndFWS = techGroups[2]
@@ -151,7 +153,12 @@ class Projects extends React.Component {
         <div
           id="projectBox"
         >
-          {projects}
+          {
+            projects.length == 0 ?
+            <SpinnerRoundFilled />
+            :
+            projects
+          }
         </div>
       </div>
     )
