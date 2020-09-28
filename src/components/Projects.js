@@ -19,18 +19,19 @@ class Projects extends React.Component {
       techModalVisible: false
     }
     this.myRef = React.createRef()
-    this.backendURL = "http://localhost:4007"
+    // this.backendURL = "http://localhost:4007"
+    this.backendURL = "http://10.0.0.233:4007"
     this.modalStuff = ''
   }
 
   UNSAFE_componentWillMount = () => {
+    if(process.env.NODE_ENV === "production") {
+      this.backendURL = "https://sleepy-hollows-70516.herokuapp.com"
+    }
     this.retrieveTechnologies()
   }
 
   componentDidMount = () => {
-    if(process.env.NODE_ENV === "production") {
-      this.backendURL = "https://sleepy-hollows-70516.herokuapp.com"
-    }
     this.retrieveProjects()
   }
 
@@ -184,9 +185,9 @@ class Projects extends React.Component {
                 {makeTechSection("Continuous Integrations", ci)}
               </Panel>
             </Collapse>
-            <Button className="techButton" type="primary" onClick={()=>this.openTechModal(index, techGroups)}>
+            {/* <Button className="techButton" type="primary" onClick={()=>this.openTechModal(index, techGroups)}>
               Project Tech
-            </Button>
+            </Button> */}
           </Card>
         </div>
       )

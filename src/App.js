@@ -64,7 +64,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(process.env.NODE_ENV, process.env.REACT_APP_BACKEND_URL)
     return (
       <div className="App">
         <MenuComponent 
