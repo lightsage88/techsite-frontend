@@ -21,3 +21,9 @@
 .iconImage {
   height: inherit;
  }
+
+ @media only screen and (min-width:768px) {
+  .techSection h3 {
+    padding: .5rem;
+  }
+ }

@@ -72,7 +72,26 @@
 }
 
 @media only screen and (min-width:768px) {
+
+  #projectBox {
+    width: 80vw;
+    margin: auto;
+  }
+
+
   .ant-card-body {
     flex-direction: row;
+  }
+
+  .ant-collapse-content-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  
+  .iconImage {
+    height: inherit;
+    max-height: 3vw;
+    margin: auto 1vw;
   }
 }
