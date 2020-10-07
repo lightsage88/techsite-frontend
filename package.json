@@ -17,6 +17,9 @@
     "react-anime": "^3.0.3",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
+    "rss-converter": "^1.1.6",
+    "rss-parser": "^3.9.0",
+    "rss-url-parser": "^2.1.1",
     "spinners-react": "^1.0.4"
   },
   "scripts": {

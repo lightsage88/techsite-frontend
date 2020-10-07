@@ -1,0 +1,35 @@
+#articlesDiv {
+  background-color: #454266;
+  background-image: url("https://www.transparenttextures.com/patterns/black-twill.png");
+  padding-bottom: 1rem;
+}
+
+#articlesDiv h1 {
+  color: lightsalmon;
+  font-family: "Krona", sans-serif;
+  padding-top: 1vw;
+}
+
+#articlesUL {
+  margin-bottom: 0;
+  padding: 3vw;
+  background: aliceblue;
+  opacity: 0.8;
+  border: solid;
+  border-radius: 1vw;
+  width: 80vw;
+  margin: auto;
+  list-style: none;
+  font-family: "Archivo", sans-serif;
+}
+
+#articlesUL li {
+  padding: 1vw;
+}
+
+@media only screen and (min-width: 765px) {
+  #articlesUL {
+    width: 45vw;
+    font-size: 1.2rem;
+  }
+}

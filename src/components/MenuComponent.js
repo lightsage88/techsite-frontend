@@ -53,12 +53,19 @@ class MenuComponent extends React.Component {
               </Menu.Item>
               <Menu.Item key="3">
                 <a
-                  onCLick={(e) => this.handleClick(e)}
+                  onClick={(e) => this.handleClick(e)}
+                  href="#articlesDiv">
+                  Articles
+                </a>
+              </Menu.Item>
+              <Menu.Item key="4">
+                <a
+                  onClick={(e) => this.handleClick(e)}
                   href="#contactLand">
                   Contact
                 </a>
               </Menu.Item>
-              <Menu.Item key="4">
+              <Menu.Item key="5">
                 {
                   this.props.loggedIn
                     ? <p onClick={() => {
