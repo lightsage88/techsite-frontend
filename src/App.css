@@ -46,8 +46,8 @@ ul.ant-menu-dark.ant-menu-root {
   font-family: 'Krona', sans-serif;
 }
 
-#aboutLand, #projectLand, #contactLand { 
-  scroll-margin-top: 237px;
+#aboutLand, #projectLand, #contactLand, #articlesDiv { 
+  scroll-margin-top: 280px;
 
 }
 
