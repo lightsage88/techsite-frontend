@@ -51,13 +51,13 @@ class MenuComponent extends React.Component {
                   Projects
                 </a>
               </Menu.Item>
-              <Menu.Item key="3">
+              {/* <Menu.Item key="3">
                 <a
                   onClick={(e) => this.handleClick(e)}
                   href="#articlesDiv">
                   Articles
                 </a>
-              </Menu.Item>
+              </Menu.Item> */}
               <Menu.Item key="4">
                 <a
                   onClick={(e) => this.handleClick(e)}
