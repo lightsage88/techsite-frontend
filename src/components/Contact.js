@@ -15,13 +15,13 @@ class Contact extends React.Component {
           Contact
         </h1>
         <div id="contactMethodDiv">
-          <a href="mailto:adrian.e.rosales@gmail.com">
+          <a href="mailto:adrian.e.rosales@gmail.com" target="_blank">
             <img className="contactMethodImages" src={gmail} />
           </a>
-          <a href="https://github.com/lightsage88">
+          <a href="https://github.com/lightsage88" target="_blank">
             <img className="contactMethodImages" src={github} />
           </a>
-          <a href="https://www.linkedin.com/in/adrian-rosales88/">
+          <a href="https://www.linkedin.com/in/adrian-rosales88/" target="_blank">
             <img className="contactMethodImages" src={linkedin} />
           </a>
         </div>

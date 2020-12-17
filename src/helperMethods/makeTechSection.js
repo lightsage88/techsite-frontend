@@ -11,7 +11,7 @@ export const makeTechSection = (sectionName, array) => {
       let techImage = base64ToImage(item)
       
       return (
-          <a key={index} href={item.tech_website}>
+          <a key={index} href={item.tech_website} target="_blank">
             <Tooltip placement="topLeft" title={item.name} arrowPointAtCenter>
               <img className="iconImage" src={techImage} />
             </Tooltip>

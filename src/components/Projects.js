@@ -114,7 +114,7 @@ class Projects extends React.Component {
             hoverable
             style={index % 2 == 0 ? {background: ''} : {background: 'cyan'}}
           >
-            <a href={item.projectlink}>
+            <a href={item.projectlink} target="_blank">
               <div className="projectLinkDiv">
                 <Meta title={item.name} />
                 <img className="projectIcon" src={imageSrc}/>
@@ -126,8 +126,8 @@ class Projects extends React.Component {
               </Panel>
               <Panel className="panelTitle" header="Links" key="2">
                 <ul className="projectLinksUL">
-                  <li><a href={item.projectlink}>Project Link</a></li>
-                  <li><a href={item.repolink}>Repo Link</a></li>
+                  <li><a href={item.projectlink} target="_blank">Project Link</a></li>
+                  <li><a href={item.repolink} target="_blank">Repo Link</a></li>
                 </ul>
                 
               </Panel>

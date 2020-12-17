@@ -140,7 +140,7 @@ class App extends React.Component {
           } 
           <About />
           <Projects ref={this.projectsRef}/>
-          <Articles mediumStories={this.state.mediumStories}/>
+          {/* <Articles mediumStories={this.state.mediumStories}/> */}
           <Contact />
           <Footer />
       </div>

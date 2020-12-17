@@ -27,7 +27,7 @@ class Articles extends React.Component {
     const articleListItems = this.state.mediumStories.map(story => {
       return (
         <li>
-          <a href={story.link}>
+          <a href={story.link} target="_blank">
             {story.title}
           </a>
         </li>
@@ -42,7 +42,7 @@ class Articles extends React.Component {
               <ul id="articlesUL">
                 {articleListItems}
                 <li>
-                  <a href="https://medium.com/@adrian.e.rosales">More Articles</a>
+                  <a href="https://medium.com/@adrian.e.rosales" target="_blank">More Articles</a>
                 </li>
               </ul>
             </div>
